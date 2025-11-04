@@ -1,1 +1,33 @@
-/* Estilos específicos para a página home dentro da tag main */
+.main {
+  display: flex;
+  flex-direction: column;     
+  align-items: flex-start;    
+  justify-content: flex-start;
+  padding: 130px 80px 20px;
+}
+
+.top-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px; 
+    margin-bottom: 20px;
+}
+
+.top-content h1 {
+    font-size: 80px;
+}
+
+.main p{
+    font-size: 30px;
+}
+
+#botao-inicio{
+    padding: 25px;
+    font-size: 30px;
+    align-items: center;
+    background-color: chartreuse;
+    margin: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
