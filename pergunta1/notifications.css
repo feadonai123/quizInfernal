@@ -43,7 +43,7 @@
 
 .notification div:has(img) {
   aspect-ratio: 1;
-  width: 50px;
+  width: 55px;
   overflow: hidden;
   border-radius: 999px;
   border: solid 2px var(--color-primary);

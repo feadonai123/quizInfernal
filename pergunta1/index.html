@@ -166,21 +166,22 @@
 		</footer>
 
 		<script src="script.js"></script>
+
 		<script type="module">
 			const { fakerPT_BR: faker } = await import('https://esm.sh/@faker-js/faker');
 			
-			const MIN_INTERVAL_MS = 500
-			const MAX_INTERVAL_MS = 6 * 1000
+			const MIN_INTERVAL_MS = 500;
+			const MAX_INTERVAL_MS = 6 * 1000;
 			
-			createNotificationsRandomly()
+			createNotificationsRandomly();
 			
 			function getNextInterval() {
-				return Math.max(MIN_INTERVAL_MS, Math.random() * MAX_INTERVAL_MS)
+				return Math.max(MIN_INTERVAL_MS, Math.random() * MAX_INTERVAL_MS);
 			}
 			
 			function createNotificationsRandomly() {
-				createNotification()
-				setTimeout(createNotificationsRandomly, getNextInterval())
+				createNotification();
+				setTimeout(createNotificationsRandomly, getNextInterval());
 			}
 			
 			function createNotification() {
@@ -204,10 +205,10 @@
 				
 				const textContainer = document.createElement('div');
 				notification.append(textContainer);
-				textContainer.classList.add('text-container')
+				textContainer.classList.add('text-container');
 				
-				const text = document.createElement('p')
-				textContainer.append(text)
+				const text = document.createElement('p');
+				textContainer.append(text);
 				
 				const nameSpan = document.createElement('span');
 				nameSpan.classList.add('name');
@@ -215,16 +216,50 @@
 				text.append(nameSpan);
 				
 				const contentSpan = document.createElement('span');
-				contentSpan.textContent = ' completou o quiz e descobriu que é uma coxinha!';
+				contentSpan.textContent = getNotificationText();
 				text.append(contentSpan);
 				
 				setTimeout(() => {
-					notification.classList.add("slide-out")
+					notification.classList.add('slide-out');
 					
-					notification.addEventListener('animationend',() => {
-						listItem.remove()
-						})
+					notification.addEventListener('animationend', () => {
+						listItem.remove();
+						});
 						}, 5 * 1000);
+					}
+					
+					function getNotificationText() {
+						const common = [
+						'uma coxinha!',
+						'um quibe!',
+						'uma empadinha!',
+						'uma coxinha sem recheio :(',
+						'uma empadinha seca :(',
+						'uma bolinha de queijo!',
+						'um pastelzinho!',
+						'uma esfirra!',
+						];
+						
+						const rare = [
+						'resolveu o aquecimento global!',
+						'foi recrutado pela NASA!',
+						'ganhou um Nobel!',
+						'TRANSCENDEU!',
+						];
+						
+						const base = ' completou o quiz e ';
+						
+						const isRare = Math.random() < 0.15;
+						
+						if (isRare) {
+							return base + rare[Math.floor(Math.random() * rare.length)];
+						}
+						
+						return (
+						base +
+						'descobriu que é ' +
+						common[Math.floor(Math.random() * common.length)]
+						);
 					}
 		</script>
 
