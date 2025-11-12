@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingWrapper = document.getElementById('resultadoModalLoadingWrapper');
     const assinarPlanoWrapper = document.getElementById('resultadoModalAssinarPlano');
     const assinarPlanoButtons = document.querySelectorAll('.resultado-plano-card-assinatura-button');
-
-
     const nameWrapper = form.querySelector('#resultadoModalNome').closest('.resultado-modal-form-field');
     const emailWrapper = form.querySelector('#resultadoModalEmail').closest('.resultado-modal-form-field');
     const phoneWrapper = form.querySelector('#resultadoModalTelefone').closest('.resultado-modal-form-field');
@@ -19,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Numero aleatorio entre 5 e 10 segundos
     const LOADING_DURATION = Math.floor(Math.random() * 5000) + 5000;
+
+    let loadingTimeoutId;
 
     const setVisibility = (element, shouldShow) => {
         if (shouldShow) {
@@ -97,26 +97,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const openModal = () => {
         resetModalState();
-        modalOverlay.classList.add('is-visible');
-        modalOverlay.setAttribute('aria-hidden', 'false');
+        setVisibility(modalOverlay, true);
     };
 
     const closeModal = () => {
-        modalOverlay.classList.remove('is-visible');
-        modalOverlay.setAttribute('aria-hidden', 'true');
+        clearTimeout(loadingTimeoutId);
+        setVisibility(modalOverlay, false);
     };
 
-    modalTrigger.addEventListener('click', openModal);
-    modalClose.addEventListener('click', closeModal);
-    modalContent.addEventListener('click', (event) => {
+    const handleModalContentClick = (event) => {
         event.stopPropagation();
-    });
-    modalOverlay.addEventListener('click', closeModal);
-    assinarPlanoButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            alert('serviço indisponivel. Tente novamente mais tarde');
-        });
-    });
+    };
+
+    const handleAssinarPlanoClick = () => {
+        alert('serviço indisponivel. Tente novamente mais tarde');
+    };
 
     const validateForm = () => {
         let isValid = true;
@@ -158,30 +153,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     };
 
-    phoneInput.addEventListener('input', (event) => {
+    const handlePhoneInput = (event) => {
         event.target.value = applyPhoneMask(event.target.value);
         resetError();
-    });
+    };
 
-    ['nome', 'email', 'telefone'].forEach((fieldName) => {
-        const input = form[fieldName];
-        const wrapper = input.closest('.resultado-modal-form-field');
+    const handleFieldInput = (event) => {
+        const fieldWrapper = event.currentTarget.closest('.resultado-modal-form-field');
+        if (fieldWrapper) {
+            clearFieldError(fieldWrapper);
+        }
+        resetError();
+    };
 
-        input.addEventListener('input', () => {
-            clearFieldError(wrapper);
-            resetError();
-        });
-    });
-
-    const consentInput = form.consentimento;
-    consentInput.addEventListener('change', () => {
-        if (consentInput.checked) {
+    const handleConsentChange = (event) => {
+        if (event.currentTarget.checked) {
             clearFieldError(consentWrapper);
             resetError();
         }
-    });
+    };
 
-    form.addEventListener('submit', (event) => {
+    const handleFormSubmit = (event) => {
         event.preventDefault();
 
         const isValid = validateForm();
@@ -197,5 +189,19 @@ document.addEventListener('DOMContentLoaded', () => {
         loadingTimeoutId = setTimeout(() => {
             showAssinarPlanoState();
         }, LOADING_DURATION);
+    };
+
+    modalTrigger.addEventListener('click', openModal);
+    modalClose.addEventListener('click', closeModal);
+    modalContent.addEventListener('click', handleModalContentClick);
+    modalOverlay.addEventListener('click', closeModal);
+    assinarPlanoButtons.forEach((button) => {
+        button.addEventListener('click', handleAssinarPlanoClick);
     });
+    phoneInput.addEventListener('input', handlePhoneInput);
+    form.nome.addEventListener('input', handleFieldInput);
+    form.email.addEventListener('input', handleFieldInput);
+    form.telefone.addEventListener('input', handleFieldInput);
+    form.consentimento.addEventListener('change', handleConsentChange);
+    form.addEventListener('submit', handleFormSubmit);
 });

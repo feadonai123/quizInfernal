@@ -49,10 +49,10 @@
     </main>
 
      <div class="resultado-modal-overlay" id="resultadoModalOverlay" aria-hidden="true">
-         <div class="resultado-modal" role="dialog" aria-modal="true" id="resultadoModalContent">
+         <section class="resultado-modal" role="dialog" aria-modal="true" aria-labelledby="resultadoModalTitle" id="resultadoModalContent">
             <button type="button" class="resultado-modal-close" id="resultadoModalClose">x</button>
-            <div class="resultado-modal-form" id="resultadoModalFormWrapper">
-                <p class="resultado-modal-title">Preencha o formulário abaixo para receber o resultado</p>
+            <section class="resultado-modal-form" id="resultadoModalFormWrapper" aria-hidden="true" aria-labelledby="resultadoModalTitle">
+                <h2 class="resultado-modal-title" id="resultadoModalTitle">Preencha o formulário abaixo para receber o resultado</h2>
                 <form id="resultadoForm" novalidate>
                     <div class="resultado-modal-form-field">
                         <label for="resultadoModalNome">Nome</label>
@@ -79,17 +79,17 @@
                     <button type="submit" class="resultado-modal-button-submit">Confirmar</button>
                     <p class="resultado-modal-error" id="resultadoModalError" role="alert"></p>
                 </form>
-            </div>
+            </section>
 
-            <div class="resultado-modal-loading" id="resultadoModalLoadingWrapper">
+            <section class="resultado-modal-loading" id="resultadoModalLoadingWrapper" role="status" aria-live="polite" aria-hidden="true">
                 <div class="resultado-modal-loading-spinner"></div>
                 <p class="resultado-modal-loading-text">Processando resultados...</p>
-            </div>
+            </section>
 
-            <div class="resultado-modal-assinar-plano" id="resultadoModalAssinarPlano">
-                <p class="resultado-modal-assinar-plano-text">
+            <section class="resultado-modal-assinar-plano" id="resultadoModalAssinarPlano" aria-labelledby="resultadoModalPlanosTitle" aria-hidden="true">
+                <h3 class="resultado-modal-assinar-plano-text" id="resultadoModalPlanosTitle">
                     verificamos que seu usuário não possui uma conta cadastrada, para ter acesso ao resultado, escolha um plano abaixo
-                </p>
+                </h3>
                 <div class="resultado-modal-planos">
                     <article class="resultado-plano-card">
                         <h3 class="resultado-plano-card-titulo">Plano Pro</h3>
@@ -97,7 +97,7 @@
                         <ul class="resultado-plano-card-features">
                             <li>Gerar relatórios</li>
                         </ul>
-                        <button type="button" class="resultado-plano-card-assinatura-button" data-plano="pro">
+                        <button type="button" class="resultado-plano-card-assinatura-button">
                             Assinar
                         </button>
                     </article>
@@ -109,7 +109,7 @@
                             <li>Todos os recursos do Plano Pro</li>
                             <li>Remover anúncios</li>
                         </ul>
-                        <button type="button" class="resultado-plano-card-assinatura-button" data-plano="pro-plus">
+                        <button type="button" class="resultado-plano-card-assinatura-button">
                             Assinar
                         </button>
                     </article>
@@ -121,13 +121,13 @@
                             <li>Todos os recursos do Plano Pro+</li>
                             <li>Suporte dedicado 24/7</li>
                         </ul>
-                        <button type="button" class="resultado-plano-card-assinatura-button" data-plano="pro-plus-plus">
+                        <button type="button" class="resultado-plano-card-assinatura-button">
                             Assinar
                         </button>
                     </article>
                 </div>
-            </div>
-         </div>
+            </section>
+         </section>
      </div>
 
     <nav class="nav nav-right">

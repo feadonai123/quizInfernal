@@ -390,10 +390,9 @@
   }
 
   .resultado-modal-overlay{
-    padding-right: 8pxpx;
-    padding-left: 8pxpx;
+    padding-right: 8px;
+    padding-left: 8px;
   }
-
 
   .resultado-modal-loading {
     padding-right: 8px;
