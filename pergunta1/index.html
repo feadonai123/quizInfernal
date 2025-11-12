@@ -32,20 +32,20 @@
 			</div>
 		</header>
 
-		<nav class="nav nav-left">
+		<aside class="nav nav-left">
 			<div class="ad ad-template1">
-				<img src="../assets/add/add1.png" alt="Anúncio">
+				<img src="https://i.imgur.com/Fh5Syga.png" alt="Anúncio">
 				<p>Descubra algo incrível!</p>
 			</div>
 			<div class="ad ad-template2">
-				<img src="../assets/add/add2.png" alt="Anúncio">
+				<img src="https://i.imgur.com/lPq1FVW.png" alt="Anúncio">
 				<p>Oferta especial para você</p>
 			</div>
 			<div class="ad ad-template3">
-				<img src="../assets/add/add3.png" alt="Anúncio">
+				<img src="https://i.imgur.com/msyBXm6.jpeg" alt="Anúncio">
 				<p>Não perca esta oportunidade</p>
 			</div>
-		</nav>
+		</aside>
 
 		<main class="main">
 			<form>
@@ -57,7 +57,7 @@
 							<input id="theme-spider" type="radio" name="theme" value="homem-aranha">
 							<div class="option-image">
 								<picture>
-									<img src="../assets/question1/miranha.png" alt="Festa temática do Homem-aranha">
+									<img src="https://i.imgur.com/WsQmPNd.png" alt="Festa temática do Homem-aranha">
 								</picture>
 							</div>
 							<label class="option-label" for="theme-spider">
@@ -69,7 +69,7 @@
 							<input id="theme-barbie" type="radio" name="theme" value="barbie">
 							<div class="option-image">
 								<picture>
-									<img src="../assets/question1/barbie.png" alt="Festa temática da Barbie">
+									<img src="https://i.imgur.com/HBIxrSt.png" alt="Festa temática da Barbie">
 								</picture>
 							</div>
 							<label class="option-label" for="theme-barbie">
@@ -81,7 +81,7 @@
 							<input id="theme-shark" type="radio" name="theme" value="baby-shark">
 							<div class="option-image">
 								<picture>
-									<img src="../assets/question1/baby-shark.png" alt="Festa temática do Baby Shark">
+									<img src="https://i.imgur.com/jRgdoLS.png" alt="Festa temática do Baby Shark">
 								</picture>
 							</div>
 							<label class="option-label" for="theme-shark">
@@ -93,7 +93,7 @@
 							<input id="theme-circus" type="radio" name="theme" value="circo">
 							<div class="option-image">
 								<picture>
-									<img src="../assets/question1/circo.png" alt="Festa temática de circo">
+									<img src="https://i.imgur.com/3EiWaRh.png" alt="Festa temática de circo">
 								</picture>
 							</div>
 							<label class="option-label" for="theme-circus">
@@ -134,16 +134,16 @@
 			</div>
 		</dialog>
 
-		<nav class="nav nav-right">
+		<aside class="nav nav-right">
 			<div class="ad ad-template4">
-				<img src="../assets/add/add4.png" alt="Anúncio">
+				<img src="https://i.imgur.com/7qFyG4L.png" alt="Anúncio">
 				<p>Aproveite agora!</p>
 			</div>
 			<div class="ad ad-template1">
-				<img src="../assets/add/add1.png" alt="Anúncio">
+				<img src="https://i.imgur.com/Fh5Syga.png" alt="Anúncio">
 				<p>Descubra algo incrível!</p>
 			</div>
-		</nav>
+		</aside>
 
 		<footer class="footer">
 			<div class="footer-content">
@@ -170,12 +170,15 @@
 		<script src="script.js"></script>
 
 		<script type="module">
+			// NOTE: essa biblioteca é utilizada para gerar dados aleatórios de pessoas nas notificações
 			const { fakerPT_BR: faker } = await import('https://esm.sh/@faker-js/faker');
 			
 			const MIN_INTERVAL_MS = 500;
 			const MAX_INTERVAL_MS = 6 * 1000;
 			
 			createNotificationsRandomly();
+			
+			// TODO: atualizar título da página de maneira 🔥 infernal 🔥
 			
 			function getNextInterval() {
 				return Math.max(MIN_INTERVAL_MS, Math.random() * MAX_INTERVAL_MS);

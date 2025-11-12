@@ -1,4 +1,11 @@
-const pics = ['Kibe.jpg', 'Brigadeiro.jpg', 'Pastel.jpg', 'falhou'];
+const pics = {
+  'Kibe': '../assets/result/Kibe.jpg',
+  'Brigadeiro': '../assets/result/Brigadeiro.jpg',
+  'Pastel': 'https://i.imgur.com/Z09F2dP.jpeg',
+};
+
+const picKeys = Object.keys(pics);
+picKeys.push('falhou');
 
 function setupResult() {
   const img = document.createElement('img');
@@ -7,15 +14,16 @@ function setupResult() {
 
   const textoRes = document.getElementById('textoResultado');
   const resultadoReal = document.getElementById('resultadoReal');
-  const a = Math.floor(Math.random() * pics.length);
+  const a = Math.floor(Math.random() * picKeys.length);
+  const selectedPic = picKeys[a];
 
   textoRes.after(img);
 
-  if (pics[a] !== 'falhou') {
+  if (selectedPic !== 'falhou') {
     resultadoReal.style.display = 'block';
     resultadoReal.addEventListener('click', function () {
-      img.src = '../assets/result/' + pics[a];
-      textoRes.textContent = 'Parabens você é um ' + pics[a];
+      img.src = pics[selectedPic];
+      textoRes.textContent = 'Parabens você é um ' + selectedPic;
     });
   } else {
     setTimeout(function () {
