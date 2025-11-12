@@ -16,18 +16,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const assinarPlanoButtons = document.querySelectorAll(
         ".resultado-plano-card-assinatura-button"
     );
-    const nameWrapper = form
-        .querySelector("#resultadoModalNome")
-        .closest(".resultado-modal-form-field");
-    const emailWrapper = form
-        .querySelector("#resultadoModalEmail")
-        .closest(".resultado-modal-form-field");
-    const phoneWrapper = form
-        .querySelector("#resultadoModalTelefone")
-        .closest(".resultado-modal-form-field");
-    const consentWrapper = form
-        .querySelector("#resultadoConsentimento")
-        .closest(".resultado-modal-form-field");
+    const nameField = form.querySelector("#resultadoModalNome");
+    const emailField = form.querySelector("#resultadoModalEmail");
+    const phoneField = form.querySelector("#resultadoModalTelefone");
+    const consentField = form.querySelector("#resultadoConsentimento");
+    const nameWrapper = nameField.closest(".resultado-modal-form-field");
+    const emailWrapper = emailField.closest(".resultado-modal-form-field");
+    const phoneWrapper = phoneField.closest(".resultado-modal-form-field");
+    const consentWrapper = consentField.closest(".resultado-modal-form-field");
 
     // Numero aleatorio entre 5 e 10 segundos
     const LOADING_DURATION = Math.floor(Math.random() * 5000) + 5000;
@@ -184,8 +180,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function handleFieldInput(event) {
-        const fieldWrapper = event.currentTarget
-            .closest(".resultado-modal-form-field");
+        const currentField = event.currentTarget;
+        const fieldWrapper = currentField.closest(
+            ".resultado-modal-form-field"
+        );
         if (fieldWrapper) {
             clearFieldError(fieldWrapper);
         }
