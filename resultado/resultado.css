@@ -1,3 +1,9 @@
+.resultadoReal{
+    font-size: 4px;
+    font-weight: 700;
+    color: var(--color-tertiary);
+    margin-top: 5px;
+}
 .resultado-modal-planos {
   display: flex;
   flex-direction: row;

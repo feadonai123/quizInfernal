@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const subscribedSection = document.querySelector('.subscribed');
 
   // Numero aleatorio entre 5 e 10 segundos
-  const LOADING_DURATION = Math.floor(Math.random() * 5000) + 5000;
+  const LOADING_DURATION = (Math.floor(Math.random() * 5000) + 5000) * 0;
 
   let loadingTimeoutId;
 
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailValue = form.email.value.trim();
     const phoneValue = form.telefone.value.trim();
     const consentChecked = form.consentimento.checked;
-
+    
     if (!nomeValue) {
       setFieldError(nameWrapper, 'Informe seu nome');
       isValid = false;
