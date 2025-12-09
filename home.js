@@ -16,6 +16,10 @@ hell(() => {
   acceptBtn.addEventListener('click', () => {
     CookieStorage.store(STORAGE_KEY, true);
     cookieDialog.close();
+
+    setTimeout(() => {
+      openRoletaDialog();
+    }, 500);
   });
 });
 
