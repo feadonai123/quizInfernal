@@ -32,7 +32,7 @@
 			</div>
 		</header>
 
-		<aside class="nav nav-left">
+		<aside class="nav nav-left" data-hell>
 			<div class="ad ad-template1">
 				<img src="https://i.imgur.com/Fh5Syga.png" alt="Anúncio">
 				<p>Descubra algo incrível!</p>
@@ -104,13 +104,13 @@
 				</fieldset>
 			</form>
 
-			<a href="../pergunta2/index.html" class="next-question-link">Próxima pergunta</a>
+			<a href="../pergunta2/index.html" class="next-question-link" id="next-question-link">Próxima pergunta</a>
 		</main>
 
-		<ul class="notifications">
+		<ul class="notifications" data-hell>
 		</ul>
 
-		<dialog id="feedback-popup">
+		<dialog id="feedback-popup" data-hell>
 			<div class="dialog-content zoom-in-bounce">
 				<h2>Você está gostando do quiz???</h2>
 				<div class="buttons">
@@ -120,7 +120,7 @@
 			</div>
 		</dialog>
 
-		<dialog id="rating-popup">
+		<dialog id="rating-popup" data-hell>
 			<div class="dialog-content zoom-in-bounce">
 				<h2>Avalie com <span>5 estrelas</span>
 					para continuar</h2>
@@ -134,7 +134,7 @@
 			</div>
 		</dialog>
 
-		<aside class="nav nav-right">
+		<aside class="nav nav-right" data-hell>
 			<div class="ad ad-template4">
 				<img src="https://i.imgur.com/7qFyG4L.png" alt="Anúncio">
 				<p>Aproveite agora!</p>
@@ -167,105 +167,112 @@
 			</div>
 		</footer>
 
+		<script src="../cookies.js"></script>
+		<script src="../hell.js"></script>
+		<script src="../randomizer.js"></script>
 		<script src="script.js"></script>
 		<script src="../chat.js"></script>
 
 		<script type="module">
-			// NOTE: essa biblioteca é utilizada para gerar dados aleatórios de pessoas nas notificações
-			const { fakerPT_BR: faker } = await import('https://esm.sh/@faker-js/faker');
-			
-			const MIN_INTERVAL_MS = 500;
-			const MAX_INTERVAL_MS = 6 * 1000;
-			
-			createNotificationsRandomly();
-			
-			function getNextInterval() {
-				return Math.max(MIN_INTERVAL_MS, Math.random() * MAX_INTERVAL_MS);
-			}
-			
-			function createNotificationsRandomly() {
-				createNotification();
-				setTimeout(createNotificationsRandomly, getNextInterval());
-			}
-			
-			function createNotification() {
-				const randomAvatar = faker.image.avatar();
-				const randomName = faker.person.firstName();
+			hell(async  () => {
+				// NOTE: essa biblioteca é utilizada para gerar dados aleatórios de pessoas nas notificações
+				const { fakerPT_BR: faker } = await import('https://esm.sh/@faker-js/faker');
 				
-				const notification = document.createElement('article');
-				notification.classList.add('notification');
+				const MIN_INTERVAL_MS = 500;
+				const MAX_INTERVAL_MS = 6 * 1000;
 				
-				const notificationsContainer = document.querySelector('ul.notifications');
-				const listItem = document.createElement('li');
-				listItem.append(notification);
-				notificationsContainer.append(listItem);
+				createNotificationsRandomly();
 				
-				const imageContainer = document.createElement('div');
-				notification.append(imageContainer);
+				// TODO: atualizar título da página de maneira 🔥 infernal 🔥
 				
-				const image = document.createElement('img');
-				imageContainer.append(image);
-				image.src = randomAvatar;
+				function getNextInterval() {
+					return Math.max(MIN_INTERVAL_MS, Math.random() * MAX_INTERVAL_MS);
+				}
 				
-				const textContainer = document.createElement('div');
-				notification.append(textContainer);
-				textContainer.classList.add('text-container');
+				function createNotificationsRandomly() {
+					createNotification();
+					setTimeout(createNotificationsRandomly, getNextInterval());
+				}
 				
-				const text = document.createElement('p');
-				textContainer.append(text);
-				
-				const nameSpan = document.createElement('span');
-				nameSpan.classList.add('name');
-				nameSpan.textContent = randomName;
-				text.append(nameSpan);
-				
-				const contentSpan = document.createElement('span');
-				contentSpan.textContent = getNotificationText();
-				text.append(contentSpan);
-				
-				setTimeout(() => {
-					notification.classList.add('slide-out');
-					notification.classList.add('exiting');
+				function createNotification() {
+					const randomAvatar = faker.image.avatar();
+					const randomName = faker.person.firstName();
 					
-					notification.addEventListener('animationend', () => {
-						listItem.remove();
-						});
-						}, 5 * 1000);
-					}
+					const notification = document.createElement('article');
+					notification.classList.add('notification');
 					
-					function getNotificationText() {
-						const common = [
-						'uma coxinha!',
-						'um quibe!',
-						'uma empadinha!',
-						'uma coxinha sem recheio :(',
-						'uma empadinha seca :(',
-						'uma bolinha de queijo!',
-						'um pastelzinho!',
-						'uma esfirra!',
-						];
+					const notificationsContainer = document.querySelector('ul.notifications');
+					const listItem = document.createElement('li');
+					listItem.append(notification);
+					notificationsContainer.append(listItem);
+					
+					const imageContainer = document.createElement('div');
+					notification.append(imageContainer);
+					
+					const image = document.createElement('img');
+					imageContainer.append(image);
+					image.src = randomAvatar;
+					
+					const textContainer = document.createElement('div');
+					notification.append(textContainer);
+					textContainer.classList.add('text-container');
+					
+					const text = document.createElement('p');
+					textContainer.append(text);
+					
+					const nameSpan = document.createElement('span');
+					nameSpan.classList.add('name');
+					nameSpan.textContent = randomName;
+					text.append(nameSpan);
+					
+					const contentSpan = document.createElement('span');
+					contentSpan.textContent = getNotificationText();
+					text.append(contentSpan);
+					
+					setTimeout(() => {
+						notification.classList.add('slide-out');
+						notification.classList.add('exiting');
 						
-						const rare = [
-						'resolveu o aquecimento global!',
-						'foi recrutado pela NASA!',
-						'ganhou um Nobel!',
-						'TRANSCENDEU!',
-						];
-						
-						const base = ' completou o quiz e ';
-						
-						const isRare = Math.random() < 0.15;
-						
-						if (isRare) {
-							return base + rare[Math.floor(Math.random() * rare.length)];
+						notification.addEventListener('animationend', () => {
+							listItem.remove();
+							});
+							}, 5 * 1000);
 						}
 						
-						return (
-						base +
-						'descobriu que é ' +
-						common[Math.floor(Math.random() * common.length)]
-						);
-					}
+						function getNotificationText() {
+							const common = [
+							'uma coxinha!',
+							'um quibe!',
+							'uma empadinha!',
+							'uma coxinha sem recheio :(',
+							'uma empadinha seca :(',
+							'uma bolinha de queijo!',
+							'um pastelzinho!',
+							'uma esfirra!',
+							];
+							
+							const rare = [
+							'resolveu o aquecimento global!',
+							'foi recrutado pela NASA!',
+							'ganhou um Nobel!',
+							'TRANSCENDEU!',
+							];
+							
+							const base = ' completou o quiz e ';
+							
+							const isRare = Math.random() < 0.15;
+							
+							if (isRare) {
+								return base + rare[Math.floor(Math.random() * rare.length)];
+							}
+							
+							return (
+							base +
+							'descobriu que é ' +
+							common[Math.floor(Math.random() * common.length)]
+							);
+						}
+						})
 		</script>
 
 		<!-- SVGs -->

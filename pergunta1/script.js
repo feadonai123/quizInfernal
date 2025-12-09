@@ -1,11 +1,15 @@
-const options = document.querySelectorAll('.option');
 const optionsWrapper = document.querySelector('.options');
+
+shuffleOptions(optionsWrapper);
+
+const options = document.querySelectorAll('.option');
 const inputs = document.querySelectorAll('input[type="radio"]');
 const ratingPopup = document.querySelector('#rating-popup');
 const feedbackPopup = document.querySelector('#feedback-popup');
 
+hell(setupAnnoyingPopup);
+setupNextLink();
 setupAnswerListeners();
-setupAnnoyingPopup();
 setupValidation();
 
 function setupAnswerListeners() {

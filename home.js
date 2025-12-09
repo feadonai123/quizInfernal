@@ -1,21 +1,25 @@
 const cookieDialog = document.getElementById('cookie-dialog');
 const acceptBtn = document.getElementById('cookie-accept');
+const firstQuestionLink = document.getElementById('botao-inicio');
 
-const STORAGE_KEY = "cookiesAccepted";
+hell(() => {
+  const STORAGE_KEY = 'cookiesAccepted';
 
-// abrir automaticamente se ainda não aceitou
-document.addEventListener("DOMContentLoaded", () => {
-  const accepted = localStorage.getItem(STORAGE_KEY);
+  // abrir automaticamente se ainda não aceitou
+  document.addEventListener('DOMContentLoaded', () => {
+    const accepted = CookieStorage.get(STORAGE_KEY);
+    if (!accepted) {
+      cookieDialog.showModal(); // abre sozinho
+    }
+  });
 
-  if (!accepted) {
-    cookieDialog.showModal();  // abre sozinho
-  }
+  acceptBtn.addEventListener('click', () => {
+    CookieStorage.store(STORAGE_KEY, true);
+    cookieDialog.close();
+  });
 });
 
-// ao aceitar, salva e fecha
-acceptBtn.addEventListener("click", () => {
-  localStorage.setItem(STORAGE_KEY, "true");
-  cookieDialog.close();
-});
-
-localStorage.clear();
+generateRandomQuestionsSequence();
+    let nextQuestion = getNextQuestionNumber();
+    firstQuestionLink.href = `pergunta${nextQuestion}/index.html`;
+    firstQuestionLink.addEventListener("click", shiftQuestionSequence)
