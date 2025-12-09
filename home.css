@@ -150,6 +150,7 @@
   .top-content h1 {
     font-size: clamp(1.25rem, 9vw, 36px);
     width: 100%;
+    flex: 1 1 100%;
   }
   .top-content img {
     width: 100%;
@@ -165,7 +166,7 @@
     border-radius: 12px;
   }
 
-  #cookie-dialog {
+  #cookie-dialog[open] {
     width: 100vw;
     height: 100vh;
     max-width: 100%;
