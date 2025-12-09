@@ -13,12 +13,18 @@
 .about-content h3 {
     text-align: center;
     margin-top: 40px;
+    font-size: 20px;
+
 }
 
 .about-text {
     text-align: justify;
 }
-
+.about-content ul{
+    margin-top: 20px;
+    font-family: 'Instrument Serif', serif;
+    font-size: 18px;
+}
 .members-grid {
     display: flex;
     flex-wrap: wrap;
@@ -36,6 +42,7 @@
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     max-width: 200px;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
 .member-card img {
@@ -56,3 +63,45 @@
     text-align: center;
 }
 
+.member-card:hover{
+    transform: scale(1.05);
+}
+
+.container-content{
+    padding: 0 40px;
+}
+
+.telas h3{
+    text-align: left;
+}
+
+.telas img {
+    display: block;
+    margin: 20px auto; 
+    max-width: 500px;
+    transition: transform 0.3s ease;
+}
+.telas img:hover {
+    transform: scale(1.05);
+}
+
+.back-to-start {
+    position: fixed;
+    bottom: 20px;   
+    right: 20px;    
+    padding: 22px 30px;
+    background-color: #fb4242; 
+    color: white;
+    font-weight: bold;
+    font-family: 'Instrument Serif', serif;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+    z-index: 9999; 
+}
+
+.back-to-start:hover {
+    background-color: #fb2828;
+    transform: scale(1.05);
+}
