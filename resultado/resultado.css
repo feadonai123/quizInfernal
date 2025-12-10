@@ -3,12 +3,14 @@
   background-color: var(--color-secondary);
   color: white;
   border-color: aqua;
+  border-width: 2px;
 }
 #fakeResultado2{
   padding: 20px 12px;
   background-color: var(--color-quaternary);
   color: pink;
   border-color: #c62828;
+  border-width: 2px;
 }
 #resultadoReal{
     font-size: 8px;
