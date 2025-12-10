@@ -38,7 +38,7 @@ function getNextQuestionNumber() {
 }
 
 function setupNextLink(anchorSelector = '#next-question-link') {
-  if (!canUseCookies()) {
+  if (!CookieStorage.canUseCookies()) {
     return;
   }
 
