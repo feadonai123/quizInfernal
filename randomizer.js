@@ -38,6 +38,10 @@ function getNextQuestionNumber() {
 }
 
 function setupNextLink(anchorSelector = '#next-question-link') {
+  if (!canUseCookies()) {
+    return;
+  }
+
   const nextQuestionLink = document.querySelector(anchorSelector);
 
   const nextQuestionNumber = getNextQuestionNumber();
