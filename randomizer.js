@@ -61,3 +61,14 @@ function shiftQuestionSequence() {
 
   CookieStorage.store('questions-sequence', sequence);
 }
+
+function canChangeLink() {
+  // NOTE: o Chrome impede a escrita de cookies em contextos não seguros (como um arquivo
+  // aberto diretamente), e isso faz com que o usuário acabe em um loop das perguntas. No
+  // Firefox, isso não acontece porque podemos escrever nos cookies normalmente
+  const isUnsafeContext = window.location.href.startsWith('file://');
+  // NOTE: essa verificação não é exatamente precisa mas é o que temos
+  const isChrome = navigator.userAgent.includes('Chrome');
+
+  return !isChrome || !isUnsafeContext;
+}
