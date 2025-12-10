@@ -3,7 +3,7 @@ const documentTitle = document.title;
 let notificationsCounter =
   Number(localStorage.getItem('notifications-counter')) || 1;
 
-showAnnoyingChat();
+hell(showAnnoyingChat);
 
 function showAnnoyingChat() {
   const chatWrapper = document.createElement('aside');

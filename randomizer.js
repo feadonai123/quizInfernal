@@ -1,4 +1,4 @@
-const N_QUESTIONS = 2;
+const N_QUESTIONS = 3;
 const RESULTS_ID = -1;
 
 /**
@@ -48,8 +48,10 @@ function setupNextLink(anchorSelector = '#next-question-link') {
 
   if (nextQuestionNumber === RESULTS_ID) {
     nextQuestionLink.href = '../resultado/index.html';
+    nextQuestionLink.textContent = 'Finalizar quizz';
   } else {
     nextQuestionLink.href = `../pergunta${nextQuestionNumber}/index.html`;
+    nextQuestionLink.textContent = 'Próxima pergunta';
   }
 
   nextQuestionLink.addEventListener('click', shiftQuestionSequence);

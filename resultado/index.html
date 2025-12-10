@@ -28,7 +28,7 @@
 			</div>
 		</header>
 
-		<aside class="nav nav-left">
+		<aside class="nav nav-left" data-hell>
 			<div class="ad ad-template1">
 				<img src="../assets/img/anuncios/anuncio2.jpg" alt="Anúncio">
 				<p>Descubra algo incrível!</p>
@@ -42,18 +42,19 @@
 		<main class="main">
 			<section class="resultado-content">
 				<h2>Resultado</h2>
-				<div class="unsubscribed">
+				<div class="unsubscribed" data-hell>
 					<button type="button" class="resultado-button" id="resultadoModalTrigger">
 						Clique aqui
 					</button>
 				</div>
 
 				<div class="subscribed" hidden>
-					<button type="button" id="fakeResultado1">PEGUE SEU RESULTADO AQUI!!!</button>
+					<button type="button" id="fakeResultado1" data-hell>PEGUE SEU RESULTADO AQUI!!!</button>
 					<button type="button" id="resultadoReal">Resultado</button>
 					<p id="textoResultado"></p>
 					<p id="textoErro"></p>
-					<button id="fakeResultado2">Clique para obter seu resultado</button>
+					<button id="fakeResultado2" data-hell>Clique para obter seu resultado</button>
+					<button id="bless" hidden>Reiniciar abençoado 🙏</button>
 				</div>
 			</section>
 		</main>
@@ -140,7 +141,7 @@
 			</section>
 		</div>
 
-		<aside class="nav nav-right">
+		<aside class="nav nav-right" data-hell>
 			<div class="ad ad-template4">
 				<img src="../assets/img/anuncios/anuncio1.jpg" alt="Anúncio">
 				<p>Aproveite agora!</p>
@@ -173,6 +174,8 @@
 			</div>
 		</footer>
 
+		<script src="../cookies.js"></script>
+		<script src="../hell.js"></script>
 		<script src="../script.js"></script>
 		<script src="../chat.js"></script>
 		<script src="resultado.js"></script>

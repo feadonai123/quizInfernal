@@ -9,7 +9,7 @@ const cores = [
   '#ff9ff3',
   '#54a0ff',
   '#ff6b6b',
-  '#4ecdc4'
+  '#4ecdc4',
 ];
 
 const textosPremios = [
@@ -22,7 +22,7 @@ const textosPremios = [
   'Prêmio incrível: Seu navegador agora pode rastrear você em 12 sites diferentes simultaneamente!',
   'Você é o vencedor de um teste A/B onde você é sempre o grupo de controle!',
   'Parabéns! Você ganhou a oportunidade de aceitar cookies em mais 50 sites hoje!',
-  'Você desbloqueou o modo "experiência premium" onde você paga mais para ver menos anúncios!'
+  'Você desbloqueou o modo "experiência premium" onde você paga mais para ver menos anúncios!',
 ];
 
 let rotation = 0;
@@ -32,27 +32,27 @@ function drawRoleta() {
   const centerX = 150;
   const centerY = 150;
   const radius = 140;
-  
+
   ctx.clearRect(0, 0, 300, 300);
-  
+
   const anglePerSection = (2 * Math.PI) / cores.length;
-  
+
   for (let index = 0; index < cores.length; index++) {
     const startAngle = index * anglePerSection + rotation;
     const endAngle = (index + 1) * anglePerSection + rotation;
-    
+
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
     ctx.closePath();
     ctx.fillStyle = cores[index % cores.length];
     ctx.fill();
-    
+
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
     ctx.lineWidth = 2;
     ctx.stroke();
   }
-  
+
   ctx.beginPath();
   ctx.arc(centerX, centerY, 21, 0, 2 * Math.PI);
   ctx.fillStyle = '#ffd700';
@@ -60,7 +60,7 @@ function drawRoleta() {
   ctx.strokeStyle = '#fff';
   ctx.lineWidth = 3;
   ctx.stroke();
-  
+
   ctx.beginPath();
   ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
   ctx.strokeStyle = '#fff';
@@ -70,52 +70,52 @@ function drawRoleta() {
 
 function spinRoleta() {
   roletaDialog.setAttribute('is-spinning', '');
-  
+
   const resgatarBtn = document.getElementById('resgatar-premio-btn');
   resgatarBtn.style.display = 'none';
-  
+
   const spinningAudio = document.getElementById('roleta-spinning-audio');
   const gamblingAudio = document.getElementById('roleta-gambling-audio');
-  
-  spinningAudio.play()
-  gamblingAudio.play()
-  
+
+  spinningAudio.play();
+  gamblingAudio.play();
+
   const spinDuration = 8000;
   const minSpins = 20;
   const maxSpins = 40;
   const totalSpins = minSpins + Math.random() * (maxSpins - minSpins);
   const targetRotation = totalSpins * 2 * Math.PI;
-  
+
   const startTime = Date.now();
-  
+
   function animate() {
     const elapsed = Date.now() - startTime;
     const progress = Math.min(elapsed / spinDuration, 1);
-    
+
     const easeOut = 1 - Math.pow(1 - progress, 3);
-    
+
     rotation = targetRotation * easeOut;
     drawRoleta();
-    
+
     if (progress < 1) {
       requestAnimationFrame(animate);
     } else {
       roletaDialog.removeAttribute('is-spinning');
-      
+
       const spinningAudio = document.getElementById('roleta-spinning-audio');
       const gamblingAudio = document.getElementById('roleta-gambling-audio');
       spinningAudio.pause();
       spinningAudio.currentTime = 0;
       gamblingAudio.pause();
       gamblingAudio.currentTime = 0;
-      
+
       const winAudio = document.getElementById('roleta-win-audio');
-      winAudio.play()
-      
+      winAudio.play();
+
       showPremio();
     }
   }
-  
+
   requestAnimationFrame(animate);
 }
 
@@ -130,28 +130,31 @@ function closeRoletaDialog() {
 function showPremio() {
   const premioIndex = Math.floor(Math.random() * textosPremios.length);
   const textoPremio = textosPremios[premioIndex];
-  
+
   const premioDialog = document.getElementById('premio-dialog');
   const premioTexto = document.getElementById('premio-texto');
-  
+
   premioTexto.textContent = textoPremio;
-  
+
   closeRoletaDialog();
   setTimeout(() => {
     premioDialog.showModal();
   }, 300);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  drawRoleta();
-  
-  const resgatarBtn = document.getElementById('resgatar-premio-btn');
-  const fecharPremioBtn = document.getElementById('fechar-premio-btn');
-  const premioDialog = document.getElementById('premio-dialog');
+hell(() => {
+  document.addEventListener('DOMContentLoaded', function () {
+    drawRoleta();
 
-  resgatarBtn.addEventListener('click', spinRoleta);
-  
-  fecharPremioBtn.addEventListener('click', () => {
-    premioDialog.close();
+    const resgatarBtn = document.getElementById('resgatar-premio-btn');
+    const fecharPremioBtn = document.getElementById('fechar-premio-btn');
+    const premioDialog = document.getElementById('premio-dialog');
+
+    resgatarBtn.addEventListener('click', spinRoleta);
+
+    fecharPremioBtn.addEventListener('click', () => {
+      premioDialog.close();
+    });
   });
 });
+

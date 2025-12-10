@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const subscribedSection = document.querySelector('.subscribed');
 
   // Numero aleatorio entre 5 e 10 segundos
-  const LOADING_DURATION = (Math.floor(Math.random() * 5000) + 5000) * 0;
+  const LOADING_DURATION = Math.floor(Math.random() * 5000) + 5000;
 
   let loadingTimeoutId;
 
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailValue = form.email.value.trim();
     const phoneValue = form.telefone.value.trim();
     const consentChecked = form.consentimento.checked;
-    
+
     if (!nomeValue) {
       setFieldError(nameWrapper, 'Informe seu nome');
       isValid = false;
@@ -226,17 +226,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }, LOADING_DURATION);
   }
 
-  modalTrigger.addEventListener('click', openModal);
-  modalClose.addEventListener('click', closeModal);
-  modalContent.addEventListener('click', handleModalContentClick);
-  modalOverlay.addEventListener('click', closeModal);
-  assinarPlanoButtons.forEach(function (button) {
-    button.addEventListener('click', handleAssinarPlanoClick);
+  hell(() => {
+    modalTrigger.addEventListener('click', openModal);
+    modalClose.addEventListener('click', closeModal);
+    modalContent.addEventListener('click', handleModalContentClick);
+    modalOverlay.addEventListener('click', closeModal);
+    assinarPlanoButtons.forEach(function (button) {
+      button.addEventListener('click', handleAssinarPlanoClick);
+    });
+    phoneInput.addEventListener('input', handlePhoneInput);
+    form.nome.addEventListener('input', handleFieldInput);
+    form.email.addEventListener('input', handleFieldInput);
+    form.telefone.addEventListener('input', handleFieldInput);
+    form.consentimento.addEventListener('change', handleConsentChange);
+    form.addEventListener('submit', handleFormSubmit);
   });
-  phoneInput.addEventListener('input', handlePhoneInput);
-  form.nome.addEventListener('input', handleFieldInput);
-  form.email.addEventListener('input', handleFieldInput);
-  form.telefone.addEventListener('input', handleFieldInput);
-  form.consentimento.addEventListener('change', handleConsentChange);
-  form.addEventListener('submit', handleFormSubmit);
+
+  if (!isHellMode) {
+    setVisibility(subscribedSection, true);
+    setupResult();
+  }
 });
