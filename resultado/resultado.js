@@ -11,15 +11,19 @@ const resultadoFake2 = document.getElementById('fakeResultado2');
 const resultadoFake1 = document.getElementById('fakeResultado1');
 const resultadoReal = document.getElementById('resultadoReal');
 const blessBtn = document.querySelector('#bless');
+const blessedAudio = new Audio('../assets/bless.mp3');
 
 blessBtn.addEventListener('click', () => {
   if (isHellMode) {
     bless();
+    blessedAudio.play();
+    blessedAudio.addEventListener('pause', () => {
+      window.location = '../index.html';
+    });
   } else {
     curse();
+    window.location = '../index.html';
   }
-
-  window.location = '../index.html';
 });
 
 hell(() => {

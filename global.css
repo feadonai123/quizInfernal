@@ -136,7 +136,7 @@ body {
   border: none;
   cursor: pointer;
   font-size: 30px;
-  color: var(--color-quaternary);
+  color: var(--color-primary);
 }
 
 .header-nav {
@@ -504,7 +504,6 @@ body {
   }
 }
 
-
 @media (min-width: 1024px) {
   .options {
     grid-template-columns: 1fr 1fr;
@@ -526,7 +525,7 @@ body {
 .zoom-in-bounce {
   animation: zoom-in cubic-bezier(0.16, 0.27, 0, 1.73) 350ms;
 }
-  
+
 .sr-only {
   position: absolute;
   width: 1px;

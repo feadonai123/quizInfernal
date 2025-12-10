@@ -38,6 +38,20 @@
     box-shadow 0.2s ease;
 }
 
+.bless-btn {
+  padding: 18px 48px;
+  background-color: var(--color-tertiary);
+  color: var(--color-white);
+  font-size: 24px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
 .resultado-modal-planos {
   display: flex;
   flex-direction: row;

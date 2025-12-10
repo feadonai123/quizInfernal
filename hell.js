@@ -35,4 +35,10 @@ function removeHellElements() {
   document.querySelectorAll('[data-hell]').forEach((hellNode) => {
     hellNode.remove();
   });
+
+  const title = document.querySelector('h1');
+  title.textContent = 'Quiz Abençoado 🙏';
+
+  const icon = document.querySelector('.fire-icon');
+  icon.remove();
 }
