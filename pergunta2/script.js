@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const radioInput = this.querySelector('input[type="radio"]');
         if (radioInput) {
           radioInput.checked = true;
-          localStorage.setItem('question-2-answer', radioInput.value);
+          CookieStorage.store('question-2-answer', radioInput.value);
           if (nextLink) nextLink.classList.remove('disabled');
         }
       }

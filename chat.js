@@ -1,9 +1,9 @@
 const documentTitle = document.title;
 
 let notificationsCounter =
-  Number(localStorage.getItem('notifications-counter')) || 1;
+  Number(CookieStorage.get('notifications-counter')) || 1;
 
-showAnnoyingChat();
+hell(showAnnoyingChat);
 
 function showAnnoyingChat() {
   const chatWrapper = document.createElement('aside');
@@ -56,7 +56,7 @@ function randomNotifications(chat, sound) {
       '"' + notificationsCounter + '"',
     );
 
-    localStorage.setItem('notifications-counter', String(notificationsCounter));
+    CookieStorage.store('notifications-counter', String(notificationsCounter));
 
     document.title = `❗🔴 Você possui ${notificationsCounter} notificações! | ${documentTitle}`;
 
