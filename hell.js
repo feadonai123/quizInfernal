@@ -27,6 +27,7 @@ function bless() {
 function curse() {
   isHellMode = true;
   CookieStorage.delete('hell');
+  CookieStorage.delete('cookiesAccepted');
 }
 
 function removeHellElements() {

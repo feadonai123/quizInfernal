@@ -14,9 +14,9 @@ const blessBtn = document.querySelector('#bless');
 
 blessBtn.addEventListener('click', () => {
   if (isHellMode) {
-    curse();
-  } else {
     bless();
+  } else {
+    curse();
   }
 
   window.location = '../index.html';
@@ -110,6 +110,7 @@ function getResult(resultadoReal, textoRes, img, selectedPic) {
       img.src = pics[selectedPic];
       textoRes.textContent = 'Parabéns você é um ' + selectedPic;
       resultadoReal.style.display = 'none';
+      blessBtn.hidden = false;
     }
   } else {
     resultadoReal.addEventListener('click', function () {
