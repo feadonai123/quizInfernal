@@ -66,10 +66,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    quizForm.addEventListener('submit', (e) => {
-        if (!selectedValue) {
-            e.preventDefault();
-            alert("Escolha uma opção!");
+    quizForm.addEventListener('submit', function (event) {
+        const selectedOption = document.querySelector(
+        'input[name="brinde"]:checked',
+        );
+        if (!selectedOption) {
+        event.preventDefault();
+        alert("Escolha uma opção!");
         }
+    });
+
+    hell(() => {
+        document.documentElement.addEventListener('click', function () {
+        if (adModal.classList.contains('active')) return;
+
+        if (canTriggerClickAd) {
+            canTriggerClickAd = false;
+            window.open('https://example.com/fake-ad-simulation', '_blank');
+            setTimeout(function () {
+            canTriggerClickAd = true;
+            }, adCooldown);
+        }
+        });
     });
 });

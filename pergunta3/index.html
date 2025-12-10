@@ -42,17 +42,19 @@
     </aside>
 
     <main class="main">
-        <form id="quiz-form" action="../resultado/index.html">
+        <form id="quiz-form">
             <fieldset>
                 <legend>O que você quer ganhar de brinde?</legend>
                 
                 <div class="options infinite-scroll-container" id="infinite-list">
                     </div>
             </fieldset>
-
-            <button id="next-question-btn" class="next-question-btn" type="submit" disabled>
-                Finalizar quizz
-            </button>
+            <a href="../resultado/index.html"
+				   id="next-question-link"
+				   class="next-question-link"
+				>
+					Finalizar quizz
+			</a>
         </form>
     </main>
 
@@ -68,15 +70,6 @@
     </aside>
 	<footer class="footer">
 	</footer>
-
-    <div id="ad-overlay" class="ad-overlay"></div>
-    <div id="ad-modal" class="ad-modal">
-        <button id="close-modal-btn" class="close-modal-btn">X</button>
-        <h3>PARABÉNS! VOCÊ GANHOU!</h3>
-        <p>Você foi o visitante de número 1.000.000!</p>
-        <img src="https://i.imgur.com/Fh5Syga.png" alt="Anúncio de prêmio falso">
-        <a href="httpsa://example.com/fake-ad-page" target="_blank" class="ad-modal-button">CLIQUE AQUI PARA RESGATAR!</a>
-    </div>
 
     <script src="../script.js"></script>
     <script src="../chat.js"></script>
