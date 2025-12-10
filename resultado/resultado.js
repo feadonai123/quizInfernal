@@ -1,7 +1,7 @@
 const pics = {
   Kibe: '../assets/result/Kibe.jpg',
   Brigadeiro: '../assets/result/Brigadeiro.jpg',
-  Pastel: 'https://i.imgur.com/Z09F2dP.jpeg',
+  Pastel: '../assets/result/pastel.jpeg',
   Falha: '../assets/result/Falha.jpg',
 };
 
